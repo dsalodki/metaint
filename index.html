@@ -3,6 +3,12 @@
 <head>
     <meta charset="utf-8" />
     <title>Hello React</title>
+    <style>
+        .user-info{
+            padding: 8px;
+            border: 1px #ccc solid;
+        }
+    </style>
 </head>
 <body>
     <div id="app"> </div>
@@ -12,10 +18,27 @@
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
      
    <script type="text/babel">
+    const user = {
+        id : 5,
+        age: 33,
+        firstName: 'Tom',
+        lastName: 'Smit',
+        getFullName: function(){ 
+            return `${this.firstName} ${this.lastName}`;
+        }
+    };
+    const userClassName = "user-info";
+    const styleObj = {
+        color:'red', 
+        fontFamily:'Verdana'
+    };
     ReactDOM    
         .createRoot(document.getElementById("app"))
         .render(
-            <h2>2 + 2 = {2 + 2}</h2>,
+            <div className={userClassName}  style={styleObj}>
+                <p>Полное имя: {user.getFullName()}</p>
+                <p>Возраст: {user.age}</p>
+            </div>
         );
    </script>
 </body>
